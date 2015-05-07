@@ -23,5 +23,9 @@ class FirstViewController: UIViewController {
         
         self.performSegueWithIdentifier("goToHighScore", sender: sender)
     }
+    @IBAction func onMapButton(sender: UIButton) {
+        
+        self.performSegueWithIdentifier("goToMap", sender: sender)
+    }
 }
 

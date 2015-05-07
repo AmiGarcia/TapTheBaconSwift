@@ -9,14 +9,15 @@
 /* Begin PBXBuildFile section */
 		0C6AE9051AFAA473007E4BE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6AE9041AFAA473007E4BE5 /* AppDelegate.swift */; };
 		0C6AE9081AFAA473007E4BE5 /* TapTheBacon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C6AE9061AFAA473007E4BE5 /* TapTheBacon.xcdatamodeld */; };
-		0C6AE90A1AFAA473007E4BE5 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6AE9091AFAA473007E4BE5 /* FirstViewController.swift */; };
 		0C6AE90D1AFAA473007E4BE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C6AE90B1AFAA473007E4BE5 /* Main.storyboard */; };
 		0C6AE90F1AFAA473007E4BE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C6AE90E1AFAA473007E4BE5 /* Images.xcassets */; };
 		0C6AE9121AFAA473007E4BE5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6AE9101AFAA473007E4BE5 /* LaunchScreen.xib */; };
 		0C6AE91E1AFAA473007E4BE5 /* TapTheBaconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6AE91D1AFAA473007E4BE5 /* TapTheBaconTests.swift */; };
-		0C6AE92B1AFAA608007E4BE5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6AE92A1AFAA608007E4BE5 /* GameViewController.swift */; };
-		0C6AE92D1AFAA62A007E4BE5 /* HighScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6AE92C1AFAA62A007E4BE5 /* HighScoreViewController.swift */; };
-		0C6AE92F1AFAA916007E4BE5 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6AE92E1AFAA916007E4BE5 /* StoreViewController.swift */; };
+		0C6BA3FF1AFBDA8500FD3227 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BA3FD1AFBDA8500FD3227 /* FirstViewController.swift */; };
+		0C6BA4001AFBDA8500FD3227 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BA3FE1AFBDA8500FD3227 /* GameViewController.swift */; };
+		0C6BA4031AFBDA8C00FD3227 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BA4011AFBDA8C00FD3227 /* MapViewController.swift */; };
+		0C6BA4041AFBDA8C00FD3227 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BA4021AFBDA8C00FD3227 /* StoreViewController.swift */; };
+		0C6BA4061AFBDA9200FD3227 /* HighScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BA4051AFBDA9200FD3227 /* HighScoreViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,16 +35,17 @@
 		0C6AE9031AFAA473007E4BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C6AE9041AFAA473007E4BE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C6AE9071AFAA473007E4BE5 /* TapTheBacon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TapTheBacon.xcdatamodel; sourceTree = "<group>"; };
-		0C6AE9091AFAA473007E4BE5 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		0C6AE90C1AFAA473007E4BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0C6AE90E1AFAA473007E4BE5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0C6AE9111AFAA473007E4BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0C6AE9171AFAA473007E4BE5 /* TapTheBaconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TapTheBaconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C6AE91C1AFAA473007E4BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C6AE91D1AFAA473007E4BE5 /* TapTheBaconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTheBaconTests.swift; sourceTree = "<group>"; };
-		0C6AE92A1AFAA608007E4BE5 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		0C6AE92C1AFAA62A007E4BE5 /* HighScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreViewController.swift; sourceTree = "<group>"; };
-		0C6AE92E1AFAA916007E4BE5 /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		0C6BA3FD1AFBDA8500FD3227 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		0C6BA3FE1AFBDA8500FD3227 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		0C6BA4011AFBDA8C00FD3227 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0C6BA4021AFBDA8C00FD3227 /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		0C6BA4051AFBDA9200FD3227 /* HighScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,10 +124,11 @@
 		0C6AE9271AFAA47E007E4BE5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0C6AE9091AFAA473007E4BE5 /* FirstViewController.swift */,
-				0C6AE92E1AFAA916007E4BE5 /* StoreViewController.swift */,
-				0C6AE92A1AFAA608007E4BE5 /* GameViewController.swift */,
-				0C6AE92C1AFAA62A007E4BE5 /* HighScoreViewController.swift */,
+				0C6BA4051AFBDA9200FD3227 /* HighScoreViewController.swift */,
+				0C6BA4011AFBDA8C00FD3227 /* MapViewController.swift */,
+				0C6BA4021AFBDA8C00FD3227 /* StoreViewController.swift */,
+				0C6BA3FD1AFBDA8500FD3227 /* FirstViewController.swift */,
+				0C6BA3FE1AFBDA8500FD3227 /* GameViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -248,11 +251,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C6AE92B1AFAA608007E4BE5 /* GameViewController.swift in Sources */,
-				0C6AE92D1AFAA62A007E4BE5 /* HighScoreViewController.swift in Sources */,
-				0C6AE92F1AFAA916007E4BE5 /* StoreViewController.swift in Sources */,
-				0C6AE90A1AFAA473007E4BE5 /* FirstViewController.swift in Sources */,
+				0C6BA4001AFBDA8500FD3227 /* GameViewController.swift in Sources */,
+				0C6BA4061AFBDA9200FD3227 /* HighScoreViewController.swift in Sources */,
+				0C6BA3FF1AFBDA8500FD3227 /* FirstViewController.swift in Sources */,
+				0C6BA4041AFBDA8C00FD3227 /* StoreViewController.swift in Sources */,
 				0C6AE9051AFAA473007E4BE5 /* AppDelegate.swift in Sources */,
+				0C6BA4031AFBDA8C00FD3227 /* MapViewController.swift in Sources */,
 				0C6AE9081AFAA473007E4BE5 /* TapTheBacon.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,6 +455,7 @@
 				0C6AE9231AFAA473007E4BE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0C6AE9241AFAA473007E4BE5 /* Build configuration list for PBXNativeTarget "TapTheBaconTests" */ = {
 			isa = XCConfigurationList;
@@ -459,6 +464,7 @@
 				0C6AE9261AFAA473007E4BE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
