@@ -11,7 +11,9 @@ import CoreLocation
 
 
 // SET THIS LATER
-let uuid = NSUUID(UUIDString: "D0D3FA86-CA76-45EC-9BD9-6AF4505D009C")
+let uuid = NSUUID(UUIDString: "8492E75F-4FD6-469D-B132-043FE94921D8")
+let major = CLBeaconMajorValue(10906)
+let minor = CLBeaconMinorValue(18216)
 let identifier = "505d009c8b46d6fb"
 
 
@@ -23,8 +25,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     
     var beaconsFound: [CLBeacon] = [CLBeacon]()
     let locationManager = CLLocationManager()
-    var beaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: identifier)
-    
+    var beaconRegion = CLBeaconRegion(proximityUUID: uuid, major: major, minor: minor, identifier: identifier)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,14 +42,15 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
     }
     @IBAction func onImageButton(sender: UIButton) {
         
-        if(  beaconsFound.count != 0 ){
-            score++
+        if( self.beaconsFound.count != 0 ){
+            self.score++
         }
         
-        scoreLabel.text = String(format: "Score: %d", arguments: [++score])
+        self.scoreLabel.text = String(format: "Score: %d", arguments: [++self.score])
     }
     @IBAction func onStoreButton(sender: UIButton) {
         
@@ -62,17 +64,24 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func locationManager(manager: CLLocationManager!, didStartMonitoringForRegion region: CLRegion!) {
+        println("hey2")
+    }
+    
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
+        
         println("entered region")
         locationManager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
-        
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
+        self.beaconsFound = [CLBeacon]()
         locationManager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
     }
     
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+        
+        println("hey")
         
         if (beacons.count > 0) {
             beaconsFound = beacons as! [CLBeacon]

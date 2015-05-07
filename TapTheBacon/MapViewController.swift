@@ -15,7 +15,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager! = CLLocationManager()
     
-    let workplaceAddress: CLLocation = CLLocation(latitude: -30.060625, longitude: -51.170995)
+    let tecnopucAddress: CLLocation = CLLocation(latitude: -30.060625, longitude: -51.170995)
     
     var pointForWorkplace: MKPointAnnotation!
     
@@ -28,12 +28,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         
-        self.pointForWorkplace = self.pointAnnotationWithLocation(self.workplaceAddress, withTitle: "My WorkPlace", withSubtitle: "Here's where I work")
+        self.pointForWorkplace = self.pointAnnotationWithLocation(self.tecnopucAddress, withTitle: "TecnoPuc", withSubtitle: "Here's TecnoPuc")
         
         mapView.addAnnotation(pointForWorkplace)
-        
         mapView.showAnnotations([pointForWorkplace], animated: true)
-        
         
         // set camera altitude and center coordinate
         self.mapView.camera.altitude = pow(2, 15)
