@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="chV-Ca-ZJP">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--First View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="TapTheBacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seR-tO-1uQ">
+                                <rect key="frame" x="284" y="266" width="33" height="30"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onStartButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ie9-q9-GpF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEG-5b-GgP">
+                                <rect key="frame" x="262" y="304" width="76" height="30"/>
+                                <state key="normal" title="High Score">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onHighScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hiw-AP-uKA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="seR-tO-1uQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NOJ-Vu-Cz3"/>
+                            <constraint firstItem="TEG-5b-GgP" firstAttribute="centerX" secondItem="seR-tO-1uQ" secondAttribute="centerX" id="Ri4-Ty-nZ2"/>
+                            <constraint firstItem="TEG-5b-GgP" firstAttribute="top" secondItem="seR-tO-1uQ" secondAttribute="bottom" constant="8" symbolic="YES" id="bUL-fs-ceR"/>
+                            <constraint firstItem="seR-tO-1uQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="202" id="nHD-IP-JU8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iMl-r9-Egl"/>
+                    <connections>
+                        <segue destination="0Kt-dY-9fS" kind="show" identifier="goToGame" id="p1r-Dl-7rB"/>
+                        <segue destination="5cP-14-Rw1" kind="show" identifier="goToHighScore" id="GJa-Ax-yQG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="357"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="afX-Jf-xTC">
+            <objects>
+                <viewController id="0Kt-dY-9fS" customClass="GameViewController" customModule="TapTheBacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p9p-K4-8jQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ipb-HM-xt7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xa8-EL-LJF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kze-jc-zns">
+                                <rect key="frame" x="224" y="285" width="152" height="30"/>
+                                <state key="normal" title="PUT AN IMAGE HERE">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onImageButton:" destination="0Kt-dY-9fS" eventType="touchUpInside" id="6S1-El-LbQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uf0-aa-7fj">
+                                <rect key="frame" x="268" y="72" width="64" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8h-a9-z8a">
+                                <rect key="frame" x="249" y="550" width="102" height="30"/>
+                                <state key="normal" title="GO TO STORE">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onStoreButton:" destination="0Kt-dY-9fS" eventType="touchUpInside" id="4CM-Q3-dW5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uf0-aa-7fj" firstAttribute="top" secondItem="p9p-K4-8jQ" secondAttribute="bottom" constant="8" symbolic="YES" id="Lin-ye-Gbf"/>
+                            <constraint firstAttribute="bottom" secondItem="p8h-a9-z8a" secondAttribute="bottom" constant="20" symbolic="YES" id="SZn-qV-SlF"/>
+                            <constraint firstItem="Kze-jc-zns" firstAttribute="centerX" secondItem="xa8-EL-LJF" secondAttribute="centerX" id="TgL-Ea-qNy"/>
+                            <constraint firstItem="Kze-jc-zns" firstAttribute="centerY" secondItem="xa8-EL-LJF" secondAttribute="centerY" id="kRx-Jc-Wdu"/>
+                            <constraint firstItem="p8h-a9-z8a" firstAttribute="centerX" secondItem="Kze-jc-zns" secondAttribute="centerX" id="q3b-xK-PT7"/>
+                            <constraint firstItem="uf0-aa-7fj" firstAttribute="centerX" secondItem="Kze-jc-zns" secondAttribute="centerX" id="wyF-Ef-PFD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="uf0-aa-7fj" id="1aT-sS-beB"/>
+                        <segue destination="pBP-UN-61P" kind="show" identifier="goToStore" id="MSd-0z-Uon"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LMB-TR-HFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1739" y="74"/>
+        </scene>
+        <!--Store View Controller-->
+        <scene sceneID="IS2-zT-EFY">
+            <objects>
+                <viewController id="pBP-UN-61P" customClass="StoreViewController" customModule="TapTheBacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="USL-ux-BR7"/>
+                        <viewControllerLayoutGuide type="bottom" id="PlS-a2-hOf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KK5-xb-wQl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UNZ-qf-ZZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2539" y="254"/>
+        </scene>
+        <!--High Score View Controller-->
+        <scene sceneID="XKU-dN-KHX">
+            <objects>
+                <viewController id="5cP-14-Rw1" customClass="HighScoreViewController" customModule="TapTheBacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="euT-2b-H7N"/>
+                        <viewControllerLayoutGuide type="bottom" id="J7m-2H-xf1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PXS-MX-JkO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HighScore: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2m-Ek-vOL">
+                                <rect key="frame" x="250" y="289" width="100" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u2m-Ek-vOL" firstAttribute="centerX" secondItem="PXS-MX-JkO" secondAttribute="centerX" id="RwP-Sl-bBx"/>
+                            <constraint firstItem="u2m-Ek-vOL" firstAttribute="top" secondItem="euT-2b-H7N" secondAttribute="bottom" constant="225" id="tgG-Ha-R7D"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XIw-El-MPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1739" y="746"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Tfe-Rc-mqP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="chV-Ca-ZJP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xeg-wm-dAW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="VMa-bf-HkJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g53-Ng-lZ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="154" y="357"/>
+        </scene>
+    </scenes>
+</document>
