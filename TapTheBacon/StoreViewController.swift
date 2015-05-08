@@ -23,6 +23,7 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.allowsMultipleSelection = true
         // Do any additional setup after loading the view.
     }
     

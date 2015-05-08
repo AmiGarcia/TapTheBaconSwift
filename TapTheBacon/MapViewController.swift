@@ -34,8 +34,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.delegate = self
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        self.getLocationsFromParse()
         
 //        self.pointForWorkplace = self.pointAnnotationWithLocation(self.tecnopucAddress, withTitle: "TecnoPuc", withSubtitle: "Here's TecnoPuc")
+        
+    }
+    
+    func createMap() {
         for i in 0 ..< self.locations.count{
             let location = self.locations[i] as! CLLocation
             var pointAnnotation = self.pointAnnotationWithLocation(location, withTitle: "Good Location", withSubtitle: "This is a good location")
@@ -44,7 +49,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         
         mapView.showAnnotations( pointAnnotations as [AnyObject], animated: true)
-
         
         if( pointAnnotations.count != 0 ){
             println("hey")
@@ -52,7 +56,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             mapView.camera.altitude = pow(2, 15)
             mapView.setCenterCoordinate((pointAnnotations.firstObject! as! MKPointAnnotation ).coordinate, animated: true)
         }
-        
     }
     
     internal func getLocationsFromParse() {
@@ -66,6 +69,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
                     self.locations.addObject(locright)
                 }
+                
+                self.createMap()
             } else {
                 println(error)
             }
