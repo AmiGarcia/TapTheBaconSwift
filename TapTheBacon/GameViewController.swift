@@ -12,9 +12,9 @@ import CoreLocation
 
 // SET THIS LATER
 let uuid = NSUUID(UUIDString: "8492E75F-4FD6-469D-B132-043FE94921D8")
-let major = CLBeaconMajorValue(10906)
-let minor = CLBeaconMinorValue(18216)
-let identifier = "505d009c8b46d6fb"
+let major = CLBeaconMajorValue(9177)
+let minor = CLBeaconMinorValue(11891)
+let identifier = "beacon.identifier"
 
 
 class GameViewController: UIViewController, CLLocationManagerDelegate {
@@ -43,11 +43,17 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
+        if( CLLocationManager.authorizationStatus() == .AuthorizedAlways ){
+            locationManager.startMonitoringForRegion(beaconRegion)
+        }
     }
     @IBAction func onImageButton(sender: UIButton) {
         
         if( self.beaconsFound.count != 0 ){
             self.score++
+            println("adding")
+        }else{
+            println("hue")
         }
         
         self.scoreLabel.text = String(format: "Score: %d", arguments: [++self.score])
@@ -75,7 +81,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
-        self.beaconsFound = [CLBeacon]()
+        
+        println("exiting region")
         locationManager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
     }
     

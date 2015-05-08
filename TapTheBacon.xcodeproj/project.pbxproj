@@ -18,6 +18,7 @@
 		0C6BA4031AFBDA8C00FD3227 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BA4011AFBDA8C00FD3227 /* MapViewController.swift */; };
 		0C6BA4041AFBDA8C00FD3227 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BA4021AFBDA8C00FD3227 /* StoreViewController.swift */; };
 		0C6BA4061AFBDA9200FD3227 /* HighScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BA4051AFBDA9200FD3227 /* HighScoreViewController.swift */; };
+		0C7B23181AFD17E4005292D5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B23171AFD17E4005292D5 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		0C6BA4011AFBDA8C00FD3227 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0C6BA4021AFBDA8C00FD3227 /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		0C6BA4051AFBDA9200FD3227 /* HighScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreViewController.swift; sourceTree = "<group>"; };
+		0C7B23171AFD17E4005292D5 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = TapTheBacon/Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		0C6AE9011AFAA473007E4BE5 /* TapTheBacon */ = {
 			isa = PBXGroup;
 			children = (
+				0C7B23191AFD17EA005292D5 /* Model */,
 				0C6AE9271AFAA47E007E4BE5 /* ViewControllers */,
 				0C6AE9291AFAA496007E4BE5 /* UI */,
 				0C6AE9281AFAA486007E4BE5 /* CoreData */,
@@ -149,6 +152,15 @@
 				0C6AE9101AFAA473007E4BE5 /* LaunchScreen.xib */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		0C7B23191AFD17EA005292D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C7B23171AFD17E4005292D5 /* Product.swift */,
+			);
+			name = Model;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C6BA4001AFBDA8500FD3227 /* GameViewController.swift in Sources */,
+				0C7B23181AFD17E4005292D5 /* Product.swift in Sources */,
 				0C6BA4061AFBDA9200FD3227 /* HighScoreViewController.swift in Sources */,
 				0C6BA3FF1AFBDA8500FD3227 /* FirstViewController.swift in Sources */,
 				0C6BA4041AFBDA8C00FD3227 /* StoreViewController.swift in Sources */,

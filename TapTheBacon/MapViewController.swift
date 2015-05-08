@@ -19,6 +19,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var pointForWorkplace: MKPointAnnotation!
     
+    
+    // THIS SHOULD BE SET FROM THE SERVER
+    var locations: NSMutableArray = NSMutableArray()
+    
+    // THIS WILL BE CREATED FROM VARIABLE locations
+    var pointAnnotations: NSMutableArray = NSMutableArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
