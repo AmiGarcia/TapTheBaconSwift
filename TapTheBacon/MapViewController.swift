@@ -31,18 +31,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         // Do any additional setup after loading the view.
         
-        self.mapView.delegate = self
+        mapView.delegate = self
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         
         self.pointForWorkplace = self.pointAnnotationWithLocation(self.tecnopucAddress, withTitle: "TecnoPuc", withSubtitle: "Here's TecnoPuc")
-        
-        mapView.addAnnotation(pointForWorkplace)
+//        for i in 0 ..< self.locations.count{
+//            let location = self.locations[i] as! CLLocation
+//            pointAnnotations.addObject( pointAnnotationWithLocation(location, withTitle: "Bacon Spot", withSubtitle: "You'll get extra points if close to this spot"))
+            mapView.addAnnotation(pointForWorkplace)
+//        }
+//        
         mapView.showAnnotations([pointForWorkplace], animated: true)
-        
-        // set camera altitude and center coordinate
+//
+//        // set camera altitude and center coordinate
         self.mapView.camera.altitude = pow(2, 15)
-        self.mapView.setCenterCoordinate(pointForWorkplace.coordinate, animated: true)
+//        if( pointAnnotations.count != 0 ){
+            self.mapView.setCenterCoordinate(pointForWorkplace.coordinate, animated: true)
+//        }
+        
+    }
+    
+    internal func getLocationsFromParse() {
         
     }
     
