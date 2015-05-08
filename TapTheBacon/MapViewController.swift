@@ -19,7 +19,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var pointForWorkplace: MKPointAnnotation!
     
-    
     // THIS SHOULD BE SET FROM THE SERVER
     var locations: NSMutableArray = NSMutableArray()
     
@@ -35,20 +34,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         
-        self.pointForWorkplace = self.pointAnnotationWithLocation(self.tecnopucAddress, withTitle: "TecnoPuc", withSubtitle: "Here's TecnoPuc")
-//        for i in 0 ..< self.locations.count{
-//            let location = self.locations[i] as! CLLocation
-//            pointAnnotations.addObject( pointAnnotationWithLocation(location, withTitle: "Bacon Spot", withSubtitle: "You'll get extra points if close to this spot"))
-            mapView.addAnnotation(pointForWorkplace)
-//        }
-//        
-        mapView.showAnnotations([pointForWorkplace], animated: true)
-//
-//        // set camera altitude and center coordinate
-        self.mapView.camera.altitude = pow(2, 15)
-//        if( pointAnnotations.count != 0 ){
-            self.mapView.setCenterCoordinate(pointForWorkplace.coordinate, animated: true)
-//        }
+//        self.pointForWorkplace = self.pointAnnotationWithLocation(self.tecnopucAddress, withTitle: "TecnoPuc", withSubtitle: "Here's TecnoPuc")
+        for i in 0 ..< self.locations.count{
+            let location = self.locations[i] as! CLLocation
+            var pointAnnotation = self.pointAnnotationWithLocation(location, withTitle: "Good Location", withSubtitle: "This is a good location")
+            mapView.addAnnotation(pointAnnotation)
+            self.pointAnnotations.addObject(pointAnnotation)
+        }
+        
+        mapView.showAnnotations( pointAnnotations as [AnyObject], animated: true)
+
+        
+        if( pointAnnotations.count != 0 ){
+            println("hey")
+            // set camera altitude and center coordinate
+            mapView.camera.altitude = pow(2, 15)
+            mapView.setCenterCoordinate((pointAnnotations.firstObject! as! MKPointAnnotation ).coordinate, animated: true)
+        }
         
     }
     
