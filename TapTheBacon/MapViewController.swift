@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import Parse
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
 
@@ -55,7 +56,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     internal func getLocationsFromParse() {
-        
+        var query = PFQuery(className:"Beacon")
+        query.findObjectsInBackgroundWithBlock { (objects, error) in
+            if error == nil {
+                self.locations.removeAllObjects()
+                for object in objects! {
+                    var loc = object.objectForKey("Location") as! PFGeoPoint
+                    var locright: CLLocation = CLLocation(latitude: loc.latitude, longitude: loc.longitude)
+
+                    self.locations.addObject(locright)
+                }
+            } else {
+                println(error)
+            }
+
+        }
     }
     
     // Creates a point annotatioin for a location
