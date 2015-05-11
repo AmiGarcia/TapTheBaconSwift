@@ -17,6 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        Parse.setApplicationId("doc11ckFr1Usrafc8FNbPXqhcYskmRUZpe06y3jT", clientKey: "zBbGCH0VTPaA2cgN3E9MTaL7gtx8fhMeybvgvp2L")
+        // Override point for customization after application launch.
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, categories: nil))
+        
+        var notification = UILocalNotification() // create a new reminder notification
+        notification.alertBody = "We miss you" // text that will be displayed in the notification
+        notification.alertAction = "open" // text that is displayed after "slide to..." on the lock screen - defaults to "slide to view"
+        notification.fireDate = NSDate().dateByAddingTimeInterval(5) // 10 seconds from current time
+        notification.soundName = UILocalNotificationDefaultSoundName // play default sound
+        notification.userInfo = ["title": "One Week Without Playing"] // assign a title to the notification that we can use to retrieve it later
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
        
         UINavigationBar.appearance().barTintColor = UIColor(red: 247.0/255.0, green: 211.0/255.0, blue: 175.0/255.0, alpha: 0.2)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
