@@ -48,6 +48,19 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         var productPrice = cell.viewWithTag(2) as! UILabel
         productName.text = productAtIndex.name
         productPrice.text = String(format: "$%.2lf", arguments: [productAtIndex.price])
+        
+        
+        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundView?.backgroundColor = UIColor.clearColor()
+        cell.contentView.backgroundColor = UIColor.clearColor()
+        tableView.backgroundColor = UIColor.clearColor()
+        tableView.tableFooterView = UIView(frame:CGRectZero)
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = cell.bounds
+        cell.insertSubview(blurEffectView, atIndex: 0)
+        
         return cell
     }
     
