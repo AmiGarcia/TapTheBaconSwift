@@ -14,7 +14,7 @@ import CoreLocation
 let uuid = NSUUID(UUIDString: "8492E75F-4FD6-469D-B132-043FE94921D8")
 let major = CLBeaconMajorValue(10906)
 let minor = CLBeaconMinorValue(18216)
-let identifier = "505d009c8b46d6fb"
+let identifier = "beacon.identifier"
 
 
 class GameViewController: UIViewController, CLLocationManagerDelegate {
@@ -22,14 +22,19 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var baconButtom: UIButton!
     
-    var score: Int = 0
+    var score: Int = 0 
     
     var beaconsFound: [CLBeacon] = [CLBeacon]()
     let locationManager = CLLocationManager()
-    var beaconRegion = CLBeaconRegion(proximityUUID: uuid, major: major, minor: minor, identifier: identifier)
+    let beaconRegion = CLBeaconRegion(proximityUUID: uuid, major: major, minor: minor, identifier: identifier)
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getScore()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -52,9 +57,14 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         
         if( self.beaconsFound.count != 0 ){
             self.score++
+            println("adding")
+        }else{
+            println("hue")
         }
         
         self.scoreLabel.text = String(format: "Score: %d", arguments: [++self.score])
+        
+        self.saveScore()
     }
     @IBAction func onStoreButton(sender: UIButton) {
         
@@ -79,6 +89,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
+        
+        println("exiting region")
         self.beaconsFound = [CLBeacon]()
         locationManager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
     }
@@ -91,8 +103,26 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             beaconsFound = beacons as! [CLBeacon]
             
             // update stuff based on beacons list
+            println("updating beacons")
+        }else{
+            self.beaconsFound = [CLBeacon]()
         }
-        
+    }
+    
+    func saveScore() {
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        if let object: NSNumber = userDefaults.objectForKey("score") as? NSNumber {
+            userDefaults.setObject(NSNumber(integer: self.score), forKey: "score")
+            userDefaults.synchronize()
+        }
+    }
+    
+    func getScore() {
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        if let object: NSNumber = userDefaults.objectForKey("score") as? NSNumber {
+            self.score = object.integerValue
+            self.scoreLabel.text = String(format: "Score: %ld", arguments: [self.score])
+        }
     }
     func baconInBaconAnimation(){
         
