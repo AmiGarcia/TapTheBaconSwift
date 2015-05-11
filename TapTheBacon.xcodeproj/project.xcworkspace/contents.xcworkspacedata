@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../TapTheBaconSwift/Item.swift">
-   </FileRef>
-   <FileRef
       location = "self:TapTheBacon.xcodeproj">
    </FileRef>
 </Workspace>

@@ -22,9 +22,13 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0),
         Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0),
         Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0),
-        Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0)
+        Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0),
+        
+        // AUTOCLICKERS
+        Product(name: "AutoClicker", price: 100, multiplier: 1, autoClicks: 1),
+        Product(name: "Grandpa", price: 200, multiplier: 1, autoClicks: 5),
+        Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20)
     ]
-    
     var selectedProducts: NSMutableArray = NSMutableArray()
     
     override func viewDidLoad() {
@@ -60,6 +64,7 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func onBuyButton(sender: UIBarButtonItem) {
+        println("setting current multiplier")
         self.saveData()
         
         self.tableView.reloadData()
@@ -69,18 +74,41 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     func saveData() {
         var userDefaults = NSUserDefaults.standardUserDefaults()
         
-        // Multiplier will be stored with the key "multiplier" and the value of the multiplier
-        if let object: NSNumber = userDefaults.objectForKey("multiplier") as? NSNumber {
-            
-            var maxMultiplier = 1
-            for product in self.products as! [Product] {
-                
-            }
-            
-        }else{
-            
+        // Save current mutliplier
+        let multiplierKey = "multiplier"
+        
+        if ( userDefaults.objectForKey(multiplierKey) == nil ){
+            userDefaults.setObject(NSNumber(integer: 1), forKey:multiplierKey)
+            userDefaults.synchronize()
         }
         
+        // Multiplier will be stored with the key "multiplier" and the value of the multiplier
+        let object: NSNumber = userDefaults.objectForKey(multiplierKey) as! NSNumber
+        
+        // determines maximum multiplier in product array
+        var maxMultiplier = object.integerValue
+        for product: Product in self.products as! [Product] {
+            if( product.multiplier > maxMultiplier ){
+                maxMultiplier = product.multiplier
+            }
+        }
+        userDefaults.setObject( NSNumber(integer: maxMultiplier) , forKey:multiplierKey)
+        
+        // Save current autoclicker
+        let autoclickerKey = "autoclicker"
+        if( userDefaults.objectForKey(autoclickerKey) == nil ){
+            userDefaults.setObject(NSNumber(integer: 0), forKey: autoclickerKey)
+        }
+        
+        var currentAutoClicks = (userDefaults.objectForKey(autoclickerKey) as! NSNumber).integerValue
+        for product: Product in self.products as! [Product] {
+            // increments autoclicker
+            currentAutoClicks += product.autoClicks
+        }
+        userDefaults.setObject(NSNumber(integer: currentAutoClicks), forKey: autoclickerKey)
+        
+        // syncronize
+        userDefaults.synchronize()
     }
     
 }

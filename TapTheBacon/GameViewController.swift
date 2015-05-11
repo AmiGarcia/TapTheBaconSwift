@@ -21,7 +21,10 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var score: Int = 0 
+    var score: Int = 0
+    var multiplier: Int = 0
+    var autoclicks: Int = 0
+    var timer: NSTimer!
     
     var beaconsFound: [CLBeacon] = [CLBeacon]()
     let locationManager = CLLocationManager()
@@ -34,12 +37,29 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.getScore()
+        self.multiplier = self.getMultiplierValue()
+        self.autoclicks = self.getAutoClicks()
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("onTimerEvent"), userInfo: nil, repeats: true)
+    }
+    
+    func onTimerEvent() {
+        if( self.beaconsFound.count != 0 ){
+            self.score += self.multiplier
+            println("adding")
+        }else{
+            self.score += self.multiplier + self.autoclicks
+        }
+        
+        self.scoreLabel.text = String(format: "Score: %d", arguments: [self.score])
+        
+        self.saveScore()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         locationManager.stopMonitoringForRegion(beaconRegion)
+        self.timer.invalidate()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -58,13 +78,13 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func onImageButton(sender: UIButton) {
         
         if( self.beaconsFound.count != 0 ){
-            self.score++
+            self.score += self.multiplier
             println("adding")
         }else{
             println("hue")
         }
-        
-        self.scoreLabel.text = String(format: "Score: %d", arguments: [++self.score])
+        self.score = self.score + multiplier
+        self.scoreLabel.text = String(format: "Score: %d", arguments: [self.score])
         
         self.saveScore()
     }
@@ -116,6 +136,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         if let object: NSNumber = userDefaults.objectForKey("score") as? NSNumber {
             userDefaults.setObject(NSNumber(integer: self.score), forKey: "score")
             userDefaults.synchronize()
+        }else{
+            println("not saving score")
         }
     }
     
@@ -126,5 +148,24 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             self.scoreLabel.text = String(format: "Score: %ld", arguments: [self.score])
         }
     }
+    
+    func getMultiplierValue() ->Int {
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        println("getting multiplier")
+        if let value = userDefaults.objectForKey("multiplier") as? NSNumber {
+            return value.integerValue
+        }else{
+            return 1
+        }
+    }
 
+    func getAutoClicks() ->Int {
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        println("getting autoclicker")
+        if let value = userDefaults.objectForKey("autoclicker") as? NSNumber {
+            return value.integerValue
+        }else{
+            return 0
+        }
+    }
 }
