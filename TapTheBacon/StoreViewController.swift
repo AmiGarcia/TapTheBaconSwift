@@ -27,9 +27,12 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         // AUTOCLICKERS
         Product(name: "AutoClicker", price: 100, multiplier: 1, autoClicks: 1),
         Product(name: "Grandpa", price: 200, multiplier: 1, autoClicks: 5),
-        Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20)
+        Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20),
+        Product(name: "Bacon Canon", price: 2000, multiplier: 1, autoClicks: 100),
+        Product(name: "Bacon Provider", price: 10000, multiplier: 1, autoClicks: 200)
     ]
     var selectedProducts: NSMutableArray = NSMutableArray()
+    var money: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,17 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.tableView.allowsMultipleSelection = true
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = String(money)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.saveScore()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -65,10 +79,27 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBAction func onBuyButton(sender: UIBarButtonItem) {
         println("setting current multiplier")
-        self.saveData()
         
-        self.tableView.reloadData()
-        self.selectedProducts.removeAllObjects()
+        if( self.money < self.priceForSelectedItems() ){
+            var alert = UIAlertView(title: "Not Enough Bacons", message: "You should get more bacons", delegate: nil, cancelButtonTitle: "Got it!")
+            alert.show()
+            
+        }else{
+            self.money -= self.priceForSelectedItems()
+            
+            self.saveData()
+            self.tableView.reloadData()
+            self.selectedProducts.removeAllObjects()
+        }
+        self.title = String(money)
+    }
+    
+    func priceForSelectedItems()->Int {
+        var totalPrice = 0
+        for product: Product in NSArray(array: self.selectedProducts) as! [Product] {
+            totalPrice += Int(product.price)
+        }
+        return totalPrice
     }
     
     func saveData() {
@@ -109,6 +140,13 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // syncronize
         userDefaults.synchronize()
+        
     }
-    
+    func saveScore() {
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        if let object: NSNumber = userDefaults.objectForKey("score") as? NSNumber {
+            userDefaults.setObject(NSNumber(integer: self.money), forKey: "score")
+            userDefaults.synchronize()
+        }
+    }
 }

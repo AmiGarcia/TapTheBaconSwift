@@ -194,7 +194,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         view.bringSubviewToFront(baconButtom)
         
     }
-   func getAutoClicks() ->Int {
+    func getAutoClicks() ->Int {
         var userDefaults = NSUserDefaults.standardUserDefaults()
         println("getting autoclicker")
         if let value = userDefaults.objectForKey("autoclicker") as? NSNumber {
@@ -202,10 +202,17 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         }else{
             return 0
         }
-}
-
-    
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if ( segue.destinationViewController is UINavigationController && ( segue.destinationViewController as! UINavigationController ).viewControllers[0] is StoreViewController ) {
+            var nVC = segue.destinationViewController as! UINavigationController
+            var dVC = nVC.viewControllers[0] as! StoreViewController
+            dVC.money = self.score
+        }
+    }
+
+}
     
     
     
