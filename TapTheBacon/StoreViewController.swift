@@ -18,18 +18,18 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     var products: NSArray = /* TESTING */ [
         
         // CLICK MULTIPLIERS
-        Product(name: "Click Multiplier", price: 5, multiplier: 2, autoClicks: 0),
-        Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0),
-        Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0),
-        Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0),
-        Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0),
+        Product(name: "Click Multiplier", price: 5, multiplier: 2, autoClicks: 0, imageName:"bacon"),
+        Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0, imageName:"bacon"),
+        Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0, imageName:"bacon"),
+        Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0, imageName:"bacon"),
+        Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0, imageName:"bacon"),
         
         // AUTOCLICKERS
-        Product(name: "AutoClicker", price: 100, multiplier: 1, autoClicks: 1),
-        Product(name: "Grandpa", price: 200, multiplier: 1, autoClicks: 5),
-        Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20),
-        Product(name: "Bacon Canon", price: 2000, multiplier: 1, autoClicks: 100),
-        Product(name: "Bacon Provider", price: 10000, multiplier: 1, autoClicks: 200)
+        Product(name: "AutoClicker", price: 100, multiplier: 1, autoClicks: 1, imageName:"bacon"),
+        Product(name: "Grandpa", price: 200, multiplier: 1, autoClicks: 5, imageName:"bacon"),
+        Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20, imageName:"bacon"),
+        Product(name: "Bacon Canon", price: 2000, multiplier: 1, autoClicks: 100, imageName:"bacon"),
+        Product(name: "Bacon Provider", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon")
     ]
     var selectedProducts: NSMutableArray = NSMutableArray()
     var money: Int = 0
@@ -60,8 +60,11 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         var productAtIndex = products[ indexPath.row ] as! Product
         var productName = cell.viewWithTag(1) as! UILabel
         var productPrice = cell.viewWithTag(2) as! UILabel
+        var productImage = cell.viewWithTag(3) as! UIImageView
         productName.text = productAtIndex.name
         productPrice.text = String(format: "$%.2lf", arguments: [productAtIndex.price])
+        productImage.image = UIImage(named: productAtIndex.imageName )
+        //productImage.image = UIImage(named: "haha")
         
         
         cell.backgroundColor = UIColor.clearColor()
