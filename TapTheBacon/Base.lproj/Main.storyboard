@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="chV-Ca-ZJP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -176,24 +177,34 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eKm-zv-ojb" id="kyR-1U-v5j">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ProductName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZu-Uk-biE">
-                                                    <rect key="frame" x="8" y="11" width="106" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3u-9b-iax">
+                                                    <rect key="frame" x="554" y="15" width="38" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3u-9b-iax">
-                                                    <rect key="frame" x="552" y="11" width="40" height="21"/>
+                                                <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bacon" translatesAutoresizingMaskIntoConstraints="NO" id="F9V-yi-6X1">
+                                                    <rect key="frame" x="8" y="4" width="46" height="46"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="F9V-yi-6X1" secondAttribute="height" multiplier="1:1" id="Yu7-W2-v7z"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProductName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZu-Uk-biE">
+                                                    <rect key="frame" x="62" y="15" width="105" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="IZu-Uk-biE" firstAttribute="leading" secondItem="kyR-1U-v5j" secondAttribute="leadingMargin" id="NxT-Yv-zu5"/>
+                                                <constraint firstItem="IZu-Uk-biE" firstAttribute="leading" secondItem="F9V-yi-6X1" secondAttribute="trailing" constant="8" id="4em-Kr-4ox"/>
                                                 <constraint firstAttribute="centerY" secondItem="S3u-9b-iax" secondAttribute="centerY" id="Qf0-vd-6z1"/>
+                                                <constraint firstAttribute="centerY" secondItem="F9V-yi-6X1" secondAttribute="centerY" id="XMp-C7-Q37"/>
+                                                <constraint firstItem="F9V-yi-6X1" firstAttribute="top" secondItem="kyR-1U-v5j" secondAttribute="topMargin" constant="-4" id="ax1-v5-ZYZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="F9V-yi-6X1" secondAttribute="bottom" constant="-4" id="cMU-Hp-KXs"/>
+                                                <constraint firstAttribute="centerY" secondItem="IZu-Uk-biE" secondAttribute="centerY" id="fjY-EN-2YN"/>
                                                 <constraint firstItem="S3u-9b-iax" firstAttribute="trailing" secondItem="kyR-1U-v5j" secondAttribute="trailingMargin" id="kAM-Pg-3G1"/>
-                                                <constraint firstAttribute="centerY" secondItem="IZu-Uk-biE" secondAttribute="centerY" id="xIA-Pg-Ead"/>
+                                                <constraint firstItem="F9V-yi-6X1" firstAttribute="leading" secondItem="kyR-1U-v5j" secondAttribute="leadingMargin" id="ref-d5-NS8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
