@@ -20,6 +20,7 @@ let identifier = "beacon.identifier"
 class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var baconButtom: UIButton!
     
     var score: Int = 0
     var multiplier: Int = 0
@@ -69,13 +70,10 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         
-        if( CLLocationManager.authorizationStatus() == .AuthorizedAlways ){
-            locationManager.startMonitoringForRegion(beaconRegion)
-        }
-        
-        
     }
     @IBAction func onImageButton(sender: UIButton) {
+        
+        baconInBaconAnimation()
         
         if( self.beaconsFound.count != 0 ){
             self.score += self.multiplier

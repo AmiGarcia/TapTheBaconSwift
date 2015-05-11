@@ -17,41 +17,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seR-tO-1uQ">
-                                <rect key="frame" x="284" y="266" width="33" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundMenu" translatesAutoresizingMaskIntoConstraints="NO" id="bZV-Tx-bVy">
+                                <rect key="frame" x="0.0" y="1" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seR-tO-1uQ">
+                                <rect key="frame" x="254" y="265" width="92" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="35"/>
                                 <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onStartButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ie9-q9-GpF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEG-5b-GgP">
-                                <rect key="frame" x="262" y="304" width="76" height="30"/>
-                                <state key="normal" title="High Score">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onHighScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hiw-AP-uKA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWf-H4-E4e">
-                                <rect key="frame" x="285" y="342" width="31" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWf-H4-E4e">
+                                <rect key="frame" x="259" y="356" width="82" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="35"/>
                                 <state key="normal" title="Map">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onMapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LYg-wW-Hk2"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TapTheBacon" translatesAutoresizingMaskIntoConstraints="NO" id="byd-oD-tJv">
+                                <rect key="frame" x="180" y="98" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Ewh-5u-KdS"/>
+                                    <constraint firstAttribute="height" constant="128" id="ufJ-Wh-HgU"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEG-5b-GgP">
+                                <rect key="frame" x="202" y="309" width="197" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="35"/>
+                                <state key="normal" title="High Score">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onHighScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hiw-AP-uKA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bZV-Tx-bVy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9eN-Vo-vz3"/>
                             <constraint firstItem="seR-tO-1uQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NOJ-Vu-Cz3"/>
                             <constraint firstItem="TEG-5b-GgP" firstAttribute="centerX" secondItem="seR-tO-1uQ" secondAttribute="centerX" id="Ri4-Ty-nZ2"/>
-                            <constraint firstItem="eWf-H4-E4e" firstAttribute="top" secondItem="TEG-5b-GgP" secondAttribute="bottom" constant="8" symbolic="YES" id="XNg-0W-Cj1"/>
-                            <constraint firstItem="TEG-5b-GgP" firstAttribute="top" secondItem="seR-tO-1uQ" secondAttribute="bottom" constant="8" symbolic="YES" id="bUL-fs-ceR"/>
-                            <constraint firstItem="seR-tO-1uQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="202" id="nHD-IP-JU8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bZV-Tx-bVy" secondAttribute="bottom" constant="-1" id="SPt-8d-wwW"/>
+                            <constraint firstItem="eWf-H4-E4e" firstAttribute="top" secondItem="TEG-5b-GgP" secondAttribute="bottom" constant="17" id="XNg-0W-Cj1"/>
+                            <constraint firstAttribute="centerX" secondItem="byd-oD-tJv" secondAttribute="centerX" id="aEJ-3q-xl4"/>
+                            <constraint firstItem="TEG-5b-GgP" firstAttribute="top" secondItem="seR-tO-1uQ" secondAttribute="bottom" constant="14" id="bUL-fs-ceR"/>
+                            <constraint firstItem="bZV-Tx-bVy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-63" id="caz-gm-v5Q"/>
+                            <constraint firstItem="byd-oD-tJv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="34" id="dT6-9U-bsd"/>
+                            <constraint firstAttribute="trailing" secondItem="bZV-Tx-bVy" secondAttribute="trailing" id="g0P-8U-MLG"/>
+                            <constraint firstItem="seR-tO-1uQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="201" id="nHD-IP-JU8"/>
                             <constraint firstItem="eWf-H4-E4e" firstAttribute="centerX" secondItem="TEG-5b-GgP" secondAttribute="centerX" id="p8j-R0-fNx"/>
                         </constraints>
                     </view>
@@ -78,44 +100,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kze-jc-zns">
-                                <rect key="frame" x="224" y="285" width="152" height="30"/>
-                                <state key="normal" title="PUT AN IMAGE HERE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-63756_640" translatesAutoresizingMaskIntoConstraints="NO" id="nte-iD-l29">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uf0-aa-7fj">
+                                <rect key="frame" x="240" y="77" width="121" height="37"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kze-jc-zns">
+                                <rect key="frame" x="238" y="183" width="157" height="234"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="234" id="rRZ-Fc-pr9"/>
+                                    <constraint firstAttribute="width" constant="157" id="tOa-CB-u1G"/>
+                                </constraints>
+                                <state key="normal" image="bacon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onImageButton:" destination="0Kt-dY-9fS" eventType="touchUpInside" id="6S1-El-LbQ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uf0-aa-7fj">
-                                <rect key="frame" x="268" y="72" width="64" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8h-a9-z8a">
-                                <rect key="frame" x="249" y="550" width="102" height="30"/>
-                                <state key="normal" title="GO TO STORE">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onStoreButton:" destination="0Kt-dY-9fS" eventType="touchUpInside" id="4CM-Q3-dW5"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nte-iD-l29" secondAttribute="trailing" id="A8t-uh-aUA"/>
+                            <constraint firstItem="Ipb-HM-xt7" firstAttribute="top" secondItem="nte-iD-l29" secondAttribute="bottom" id="B1N-Jr-EBZ"/>
                             <constraint firstItem="uf0-aa-7fj" firstAttribute="top" secondItem="p9p-K4-8jQ" secondAttribute="bottom" constant="8" symbolic="YES" id="Lin-ye-Gbf"/>
-                            <constraint firstAttribute="bottom" secondItem="p8h-a9-z8a" secondAttribute="bottom" constant="20" symbolic="YES" id="SZn-qV-SlF"/>
-                            <constraint firstItem="Kze-jc-zns" firstAttribute="centerX" secondItem="xa8-EL-LJF" secondAttribute="centerX" id="TgL-Ea-qNy"/>
+                            <constraint firstItem="Kze-jc-zns" firstAttribute="centerX" secondItem="xa8-EL-LJF" secondAttribute="centerX" constant="16.5" id="TgL-Ea-qNy"/>
+                            <constraint firstItem="nte-iD-l29" firstAttribute="top" secondItem="xa8-EL-LJF" secondAttribute="top" id="daR-rF-1zZ"/>
+                            <constraint firstItem="nte-iD-l29" firstAttribute="leading" secondItem="xa8-EL-LJF" secondAttribute="leading" id="g8z-Qp-Dnt"/>
                             <constraint firstItem="Kze-jc-zns" firstAttribute="centerY" secondItem="xa8-EL-LJF" secondAttribute="centerY" id="kRx-Jc-Wdu"/>
-                            <constraint firstItem="p8h-a9-z8a" firstAttribute="centerX" secondItem="Kze-jc-zns" secondAttribute="centerX" id="q3b-xK-PT7"/>
-                            <constraint firstItem="uf0-aa-7fj" firstAttribute="centerX" secondItem="Kze-jc-zns" secondAttribute="centerX" id="wyF-Ef-PFD"/>
+                            <constraint firstItem="uf0-aa-7fj" firstAttribute="centerX" secondItem="Kze-jc-zns" secondAttribute="centerX" constant="-18" id="wyF-Ef-PFD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Yeg-XQ-xH8">
+                        <barButtonItem key="rightBarButtonItem" image="icon-store" id="i4T-T6-xG2">
+                            <connections>
+                                <segue destination="pBP-UN-61P" kind="presentation" id="iUT-d4-5Em"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="baconButtom" destination="Kze-jc-zns" id="2yu-0b-wmz"/>
                         <outlet property="scoreLabel" destination="uf0-aa-7fj" id="1aT-sS-beB"/>
-                        <segue destination="RNm-MB-MEC" kind="show" identifier="goToStore" id="MSd-0z-Uon"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMB-TR-HFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -189,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNZ-qf-ZZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3351" y="254"/>
+            <point key="canvasLocation" x="2569" y="-543"/>
         </scene>
         <!--High Score View Controller-->
         <scene sceneID="XKU-dN-KHX">
@@ -262,8 +291,10 @@
         <!--Navigation Controller-->
         <scene sceneID="Tfe-Rc-mqP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="chV-Ca-ZJP" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="chV-Ca-ZJP" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xeg-wm-dAW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -296,4 +327,11 @@
             <point key="canvasLocation" x="2539" y="254"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BackgroundMenu" width="750" height="1334"/>
+        <image name="TapTheBacon" width="430" height="270"/>
+        <image name="background-63756_640" width="320" height="216"/>
+        <image name="bacon" width="160" height="227"/>
+        <image name="icon-store" width="34" height="33"/>
+    </resources>
 </document>
