@@ -8,13 +8,22 @@
 
 import UIKit
 import StoreKit
+import CoreData
 
 class StoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     // Contains All Products
-    var products: NSMutableArray = /* TESTING */ [Product(name: "Cookie", price: 0.99), Product(name: "Bacon", price: 1.99)]
+    var products: NSArray = /* TESTING */ [
+        
+        // CLICK MULTIPLIERS
+        Product(name: "Click Multiplier", price: 5, multiplier: 2, autoClicks: 0),
+        Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0),
+        Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0),
+        Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0),
+        Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0)
+    ]
     
     var selectedProducts: NSMutableArray = NSMutableArray()
     
@@ -24,6 +33,7 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.allowsMultipleSelection = true
+        
         // Do any additional setup after loading the view.
     }
     
@@ -42,12 +52,35 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedProducts.removeObject( products[indexPath.row] )
+        selectedProducts.removeObject( products[indexPath.row]  )
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedProducts.addObject( products[indexPath.row] )
     }
     
-
+    @IBAction func onBuyButton(sender: UIBarButtonItem) {
+        self.saveData()
+        
+        self.tableView.reloadData()
+        self.selectedProducts.removeAllObjects()
+    }
+    
+    func saveData() {
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        // Multiplier will be stored with the key "multiplier" and the value of the multiplier
+        if let object: NSNumber = userDefaults.objectForKey("multiplier") as? NSNumber {
+            
+            var maxMultiplier = 1
+            for product in self.products as! [Product] {
+                
+            }
+            
+        }else{
+            
+        }
+        
+    }
+    
 }

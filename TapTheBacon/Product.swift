@@ -8,13 +8,23 @@
 
 import UIKit
 
-class Product: NSObject {
+class Product: NSObject, Printable {
     var name: String
     var price: Double
     
-    init(name:String, price: Double){
+    var multiplier: Int
+    var autoClicks: Int
+    
+    
+    override var description: String { return "name: " + self.name + " price: " + String(stringInterpolationSegment: price)}
+    
+    init(name:String, price: Double, multiplier: Int, autoClicks: Int) {
+        
         self.name = name
         self.price = price
+        self.multiplier = multiplier
+        self.autoClicks = autoClicks
+        
         super.init()
     }
    

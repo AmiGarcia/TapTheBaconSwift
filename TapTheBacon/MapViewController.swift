@@ -14,6 +14,7 @@ import Parse
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var locationManager: CLLocationManager! = CLLocationManager()
     
     let tecnopucAddress: CLLocation = CLLocation(latitude: -30.060625, longitude: -51.170995)
@@ -26,6 +27,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // THIS WILL BE CREATED FROM VARIABLE locations
     var pointAnnotations: NSMutableArray = NSMutableArray()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,13 +36,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.delegate = self
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        self.activityIndicator.alpha = 1
+        self.activityIndicator.startAnimating()
         self.getLocationsFromParse()
-        
-//        self.pointForWorkplace = self.pointAnnotationWithLocation(self.tecnopucAddress, withTitle: "TecnoPuc", withSubtitle: "Here's TecnoPuc")
         
     }
     
     func createMap() {
+        if( self.activityIndicator.isAnimating() ){
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.alpha = 0
+        }
         for i in 0 ..< self.locations.count{
             let location = self.locations[i] as! CLLocation
             var pointAnnotation = self.pointAnnotationWithLocation(location, withTitle: "Good Location", withSubtitle: "This is a good location")
@@ -54,7 +60,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             println("hey")
             // set camera altitude and center coordinate
             mapView.camera.altitude = pow(2, 15)
-            mapView.setCenterCoordinate((pointAnnotations.firstObject! as! MKPointAnnotation ).coordinate, animated: true)
+            mapView.setCenterCoordinate((pointAnnotations.firstObject! as! MKPointAnnotation ).coordinate, animated: false)
         }
     }
     

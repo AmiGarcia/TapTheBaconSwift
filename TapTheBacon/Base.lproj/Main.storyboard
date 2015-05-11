@@ -115,7 +115,7 @@
                     </view>
                     <connections>
                         <outlet property="scoreLabel" destination="uf0-aa-7fj" id="1aT-sS-beB"/>
-                        <segue destination="pBP-UN-61P" kind="show" identifier="goToStore" id="MSd-0z-Uon"/>
+                        <segue destination="RNm-MB-MEC" kind="show" identifier="goToStore" id="MSd-0z-Uon"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMB-TR-HFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -176,13 +176,20 @@
                             <constraint firstItem="83J-gd-C2v" firstAttribute="bottom" secondItem="PlS-a2-hOf" secondAttribute="top" constant="-8" id="zBm-NN-qcP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="unT-BK-qyv">
+                        <barButtonItem key="rightBarButtonItem" title="Buy" id="HKo-YK-sIR">
+                            <connections>
+                                <action selector="onBuyButton:" destination="pBP-UN-61P" id="7LK-pF-aGh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="83J-gd-C2v" id="v7s-5P-en0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNZ-qf-ZZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2539" y="254"/>
+            <point key="canvasLocation" x="3351" y="254"/>
         </scene>
         <!--High Score View Controller-->
         <scene sceneID="XKU-dN-KHX">
@@ -229,16 +236,22 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QM1-m2-bvS">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DBR-Yv-fgU">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="DBR-Yv-fgU" secondAttribute="centerY" id="BUn-gH-8Iw"/>
                             <constraint firstItem="QM1-m2-bvS" firstAttribute="leading" secondItem="o3e-M8-3iI" secondAttribute="leading" id="RX1-Go-FQM"/>
                             <constraint firstItem="QM1-m2-bvS" firstAttribute="top" secondItem="u8b-5l-oaW" secondAttribute="bottom" id="aOY-DX-3k2"/>
                             <constraint firstItem="QM1-m2-bvS" firstAttribute="bottom" secondItem="h59-fT-4KH" secondAttribute="top" id="lR9-Qa-T4T"/>
                             <constraint firstAttribute="trailing" secondItem="QM1-m2-bvS" secondAttribute="trailing" id="y8V-Ua-kL3"/>
+                            <constraint firstAttribute="centerX" secondItem="DBR-Yv-fgU" secondAttribute="centerX" id="ypV-t1-b9z"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="DBR-Yv-fgU" id="hu6-1X-c8Q"/>
                         <outlet property="mapView" destination="QM1-m2-bvS" id="oYb-OV-gY2"/>
                     </connections>
                 </viewController>
@@ -263,6 +276,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g53-Ng-lZ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="154" y="357"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cbn-dg-BCQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="RNm-MB-MEC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UiN-J0-dpe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pBP-UN-61P" kind="relationship" relationship="rootViewController" id="emG-km-Wbg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vd2-cL-jzT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2539" y="254"/>
         </scene>
     </scenes>
 </document>

@@ -49,13 +49,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         
-//        beaconRegion.notifyEntryStateOnDisplay = true
-//        beaconRegion.notifyOnEntry = true
-//        beaconRegion.notifyOnExit = true
-        
         if( CLLocationManager.authorizationStatus() == .AuthorizedAlways ){
             locationManager.startMonitoringForRegion(beaconRegion)
-            //locationManager.requestStateForRegion(beaconRegion)
         }
         
         
@@ -116,7 +111,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func saveScore(){
+    func saveScore() {
         var userDefaults = NSUserDefaults.standardUserDefaults()
         if let object: NSNumber = userDefaults.objectForKey("score") as? NSNumber {
             userDefaults.setObject(NSNumber(integer: self.score), forKey: "score")
@@ -124,7 +119,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func getScore(){
+    func getScore() {
         var userDefaults = NSUserDefaults.standardUserDefaults()
         if let object: NSNumber = userDefaults.objectForKey("score") as? NSNumber {
             self.score = object.integerValue
