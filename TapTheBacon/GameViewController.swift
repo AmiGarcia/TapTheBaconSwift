@@ -20,6 +20,7 @@ let identifier = "505d009c8b46d6fb"
 class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var baconButtom: UIButton!
     
     var score: Int = 0
     
@@ -43,8 +44,11 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
+        
     }
     @IBAction func onImageButton(sender: UIButton) {
+        
+        baconInBaconAnimation()
         
         if( self.beaconsFound.count != 0 ){
             self.score++
@@ -90,5 +94,50 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         }
         
     }
+    func baconInBaconAnimation(){
+        
+        println("Bacon!")
+        
+        let bacon = UIImageView()
+        var baconX: CGFloat = self.view.frame.size.width/2
+        var baconY: CGFloat = self.view.frame.size.height/2
+        
+        bacon.frame = CGRect(x: baconX, y: baconY, width: 30, height: 50)
+        bacon.image = UIImage(named: "bacon-Animation")
+        self.view.addSubview(bacon)
 
-}
+        var randomToViewWidth : UInt32 = UInt32(self.view.frame.size.width)
+        var randomToViewHeight : UInt32 = UInt32(self.view.frame.size.height)
+        let randomXOffset = CGFloat(arc4random_uniform(randomToViewWidth))
+        let randomYOffset = CGFloat(arc4random_uniform(randomToViewHeight))
+
+        println(randomToViewWidth)
+        println(randomToViewHeight)
+        println(randomXOffset)
+        println(randomYOffset)
+        
+        
+        let pathR = UIBezierPath()
+        pathR.moveToPoint(CGPoint(x: baconX, y: baconY))
+        pathR.addLineToPoint(CGPoint(x: randomXOffset, y: randomYOffset))
+//        pathR.addCurveToPoint(CGPoint(x: 301, y: 239 + randomYOffset), controlPoint1: CGPoint(x: 136, y: 373 + randomYOffset), controlPoint2: CGPoint(x: 178, y: 110 + randomYOffset))
+
+        let anim = CAKeyframeAnimation(keyPath: "position")
+        anim.path = pathR.CGPath
+        anim.rotationMode = kCAAnimationRotateAuto
+        anim.repeatCount = 1
+        anim.duration = 3.0
+        
+        // add the animation
+        bacon.layer.addAnimation(anim, forKey: "animate position along path")
+        view.bringSubviewToFront(baconButtom)
+        
+    }
+
+    
+    }
+    
+    
+    
+
+
