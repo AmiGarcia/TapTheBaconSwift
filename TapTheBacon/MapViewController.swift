@@ -93,5 +93,4 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         return pointForLocation
     }
     
-    
 }
