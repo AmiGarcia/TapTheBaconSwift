@@ -88,6 +88,7 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedProducts.addObject( products[indexPath.row] )
+        
     }
     
     @IBAction func onBuyButton(sender: UIBarButtonItem) {
