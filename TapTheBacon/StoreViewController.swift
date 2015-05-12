@@ -108,6 +108,10 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         productImage.image = UIImage(named: productAtIndex.imageName )
         //productImage.image = UIImage(named: "haha")
         
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         cell.backgroundColor = UIColor.clearColor()
         cell.backgroundView?.backgroundColor = UIColor.clearColor()
@@ -119,8 +123,6 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = cell.bounds
         cell.insertSubview(blurEffectView, atIndex: 0)
-        
-        return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
