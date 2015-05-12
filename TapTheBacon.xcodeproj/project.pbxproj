@@ -19,6 +19,7 @@
 		0C6BA4041AFBDA8C00FD3227 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BA4021AFBDA8C00FD3227 /* StoreViewController.swift */; };
 		0C6BA4061AFBDA9200FD3227 /* HighScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BA4051AFBDA9200FD3227 /* HighScoreViewController.swift */; };
 		0C7B23181AFD17E4005292D5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B23171AFD17E4005292D5 /* Product.swift */; };
+		0CD9B9821B02661200648737 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD9B9811B02661200648737 /* DataBase.swift */; };
 		40704CC91AFD1E1C00E20221 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40704CC71AFD1E1C00E20221 /* Bolts.framework */; };
 		40704CCA1AFD1E1C00E20221 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40704CC81AFD1E1C00E20221 /* Parse.framework */; };
 		40704CD81AFD1EBD00E20221 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40704CCB1AFD1EBD00E20221 /* Accounts.framework */; };
@@ -62,6 +63,7 @@
 		0C6BA4021AFBDA8C00FD3227 /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		0C6BA4051AFBDA9200FD3227 /* HighScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreViewController.swift; sourceTree = "<group>"; };
 		0C7B23171AFD17E4005292D5 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = TapTheBacon/Product.swift; sourceTree = "<group>"; };
+		0CD9B9811B02661200648737 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		40704CC71AFD1E1C00E20221 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		40704CC81AFD1E1C00E20221 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		40704CCB1AFD1EBD00E20221 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				0C7B23171AFD17E4005292D5 /* Product.swift */,
+				0CD9B9811B02661200648737 /* DataBase.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -338,6 +341,7 @@
 				0C7B23181AFD17E4005292D5 /* Product.swift in Sources */,
 				0C6BA4061AFBDA9200FD3227 /* HighScoreViewController.swift in Sources */,
 				0C6BA3FF1AFBDA8500FD3227 /* FirstViewController.swift in Sources */,
+				0CD9B9821B02661200648737 /* DataBase.swift in Sources */,
 				0C6BA4041AFBDA8C00FD3227 /* StoreViewController.swift in Sources */,
 				0C6AE9051AFAA473007E4BE5 /* AppDelegate.swift in Sources */,
 				0C6BA4031AFBDA8C00FD3227 /* MapViewController.swift in Sources */,

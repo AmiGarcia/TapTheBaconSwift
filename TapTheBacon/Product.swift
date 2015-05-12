@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Product: NSObject, Printable {
+class Product: NSObject, NSCoding {
     var name: String
     var price: Double
     
@@ -27,6 +27,24 @@ class Product: NSObject, Printable {
         self.multiplier = multiplier
         self.autoClicks = autoClicks
         self.imageName = imageName
+        
+        super.init()
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: "name")
+        aCoder.encodeObject(NSNumber(double: self.price), forKey: "price")
+        aCoder.encodeObject(NSNumber(integer: self.multiplier), forKey: "multiplier")
+        aCoder.encodeObject(NSNumber(integer: self.autoClicks), forKey: "autoclicks")
+        aCoder.encodeObject(self.imageName, forKey: "imageName")
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObjectForKey("name") as! String
+        self.price = (aDecoder.decodeObjectForKey("price") as! NSNumber).doubleValue
+        self.multiplier = (aDecoder.decodeObjectForKey("multiplier") as! NSNumber).integerValue
+        self.autoClicks = (aDecoder.decodeObjectForKey("autoclicks") as! NSNumber).integerValue
+        self.imageName = aDecoder.decodeObjectForKey("imageName") as! String
         
         super.init()
     }

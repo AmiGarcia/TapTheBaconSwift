@@ -14,28 +14,68 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     
-    // Contains All Products
-    var products: NSArray = /* TESTING */ [
+//    // Contains All Products
+//    var products: NSArray = /* TESTING */ [
+//        
+//        // CLICK MULTIPLIERS
+//        Product(name: "Click Multiplier", price: 5, multiplier: 2, autoClicks: 0, imageName:"bacon"),
+//        Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0, imageName:"bacon"),
+//        Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0, imageName:"bacon"),
+//        Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0, imageName:"bacon"),
+//        Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0, imageName:"bacon"),
+//        
+//        // AUTOCLICKERS
+//        Product(name: "AutoClicker", price: 100, multiplier: 1, autoClicks: 1, imageName:"bacon"),
+//        Product(name: "Grandpa", price: 200, multiplier: 1, autoClicks: 5, imageName:"bacon"),
+//        Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20, imageName:"bacon"),
+//        Product(name: "Bacon Canon", price: 2000, multiplier: 1, autoClicks: 100, imageName:"bacon"),
+//        Product(name: "Bacon Provider", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon")
+//    ]
+    var products: DataBase = DataBase(array: [
         
-        // CLICK MULTIPLIERS
-        Product(name: "Click Multiplier", price: 5, multiplier: 2, autoClicks: 0, imageName:"bacon"),
-        Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0, imageName:"bacon"),
-        Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0, imageName:"bacon"),
-        Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0, imageName:"bacon"),
-        Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0, imageName:"bacon"),
-        
-        // AUTOCLICKERS
-        Product(name: "AutoClicker", price: 100, multiplier: 1, autoClicks: 1, imageName:"bacon"),
-        Product(name: "Grandpa", price: 200, multiplier: 1, autoClicks: 5, imageName:"bacon"),
-        Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20, imageName:"bacon"),
-        Product(name: "Bacon Canon", price: 2000, multiplier: 1, autoClicks: 100, imageName:"bacon"),
-        Product(name: "Bacon Provider", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon")
-    ]
+            // CLICK MULTIPLIERS
+            Product(name: "Click Multiplier", price: 5, multiplier: 2, autoClicks: 0, imageName:"bacon"),
+            Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0, imageName:"bacon"),
+            Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0, imageName:"bacon"),
+            Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0, imageName:"bacon"),
+            Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0, imageName:"bacon"),
+    
+            // AUTOCLICKERS
+            Product(name: "AutoClicker", price: 100, multiplier: 1, autoClicks: 1, imageName:"bacon"),
+            Product(name: "Grandpa", price: 200, multiplier: 1, autoClicks: 5, imageName:"bacon"),
+            Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20, imageName:"bacon"),
+            Product(name: "Bacon Canon", price: 2000, multiplier: 1, autoClicks: 100, imageName:"bacon"),
+            Product(name: "Bacon Provider", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon")
+        ]
+
+    )
     var selectedProducts: NSMutableArray = NSMutableArray()
     var money: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if( !self.products.hasObjectsInUserDefaults() ) {
+            self.products = DataBase(array: [
+                
+                // CLICK MULTIPLIERS
+                Product(name: "Click Multiplier", price: 5, multiplier: 2, autoClicks: 0, imageName:"bacon"),
+                Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0, imageName:"bacon"),
+                Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0, imageName:"bacon"),
+                Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0, imageName:"bacon"),
+                Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0, imageName:"bacon"),
+                
+                // AUTOCLICKERS
+                Product(name: "AutoClicker", price: 100, multiplier: 1, autoClicks: 1, imageName:"bacon"),
+                Product(name: "Grandpa", price: 200, multiplier: 1, autoClicks: 5, imageName:"bacon"),
+                Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20, imageName:"bacon"),
+                Product(name: "Bacon Canon", price: 2000, multiplier: 1, autoClicks: 100, imageName:"bacon"),
+                Product(name: "Bacon Provider", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon")
+            ])
+            self.products.saveInUserDefaults()
+        }
+        self.products.updateDataFromUserDefaults()
+        self.tableView.reloadData()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -49,15 +89,17 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.title = String(money)
     }
     
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         self.saveScore()
+//        self.products.saveInUserDefaults()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
-        var productAtIndex = products[ indexPath.row ] as! Product
+        var productAtIndex = products[ indexPath.row ] as Product
         var productName = cell.viewWithTag(1) as! UILabel
         var productPrice = cell.viewWithTag(2) as! UILabel
         var productImage = cell.viewWithTag(3) as! UIImageView
@@ -95,7 +137,6 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func onBuyButton(sender: UIBarButtonItem) {
-        println("setting current multiplier")
         
         if( self.money < self.priceForSelectedItems() ){
             var alert = UIAlertView(title: "Not Enough Bacons", message: "You should get more bacons", delegate: nil, cancelButtonTitle: "Got it!")
@@ -104,12 +145,27 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         }else{
             self.money -= self.priceForSelectedItems()
             
+            self.updatePriceForSelectedItems()
             self.saveData()
             self.tableView.reloadData()
             self.selectedProducts.removeAllObjects()
         }
         self.title = String(money)
     }
+    
+    func updatePriceForSelectedItems() {
+        for product: Product in NSArray(array: self.selectedProducts) as! [Product] {
+            var index = find(self.products.products, product)
+            if let i = index {
+                println("here")
+                var actualProduct = self.products[i]
+                actualProduct.price *= 2
+            }
+        }
+        products.saveInUserDefaults()
+        products.updateDataFromUserDefaults()
+    }
+    
     
     func priceForSelectedItems()->Int {
         var totalPrice = 0
@@ -135,7 +191,7 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // determines maximum multiplier in product array
         var maxMultiplier = object.integerValue
-        for product: Product in self.products as! [Product] {
+        for product: Product in NSArray(array: self.selectedProducts) as! [Product] {
             if( product.multiplier > maxMultiplier ){
                 maxMultiplier = product.multiplier
             }
@@ -149,7 +205,7 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
         var currentAutoClicks = (userDefaults.objectForKey(autoclickerKey) as! NSNumber).integerValue
-        for product: Product in self.products as! [Product] {
+        for product: Product in NSArray(array: self.selectedProducts) as! [Product] {
             // increments autoclicker
             currentAutoClicks += product.autoClicks
         }

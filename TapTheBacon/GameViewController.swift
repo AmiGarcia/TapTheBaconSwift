@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Parse
 
 
 // SET THIS LATER
@@ -30,6 +31,9 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     var beaconsFound: [CLBeacon] = [CLBeacon]()
     let locationManager = CLLocationManager()
     let beaconRegion = CLBeaconRegion(proximityUUID: uuid, major: major, minor: minor, identifier: identifier)
+    
+    var currentLocation:CLLocation? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,15 +45,17 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         self.multiplier = self.getMultiplierValue()
         self.autoclicks = self.getAutoClicks()
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("onTimerEvent"), userInfo: nil, repeats: true)
+        
     }
     
     func onTimerEvent() {
-        if( self.beaconsFound.count != 0 ){
-            self.score += self.multiplier
-            println("adding")
-        }else{
-            self.score += self.multiplier + self.autoclicks
-        }
+//        if( self.beaconsFound.count != 0 ){
+//            self.score += self.multiplier
+//            println("adding")
+//        }else{
+//            self.score += self.multiplier + self.autoclicks
+//        }
+        self.score += self.autoclicks
         
         self.scoreLabel.text = String(format: "Score: %d", arguments: [self.score])
         
@@ -69,6 +75,10 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
+        
+        if( CLLocationManager.authorizationStatus() == .AuthorizedAlways ){
+            locationManager.startUpdatingLocation()
+        }
         
     }
     @IBAction func onImageButton(sender: UIButton) {
@@ -91,6 +101,28 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         self.performSegueWithIdentifier("goToStore", sender: sender)
     }
     
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        locationManager.stopUpdatingLocation()
+        self.currentLocation = locations[0] as? CLLocation
+        
+        if let location = self.currentLocation {
+            if( self.beaconsFound.count != 0 ){
+                // SAVE LOCATION TO PARSE
+                var locationParse = PFGeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                var object = PFObject(className: "Beacon")
+                object["Location"] = locationParse
+                object.saveInBackgroundWithBlock({ (sucess: Bool, error: NSError?) -> Void in
+                    if let err = error{
+                        println("Error")
+                    }else{
+                        println("Sucessfully saved beacon in Parse")
+                    }
+                })
+                
+            }
+        }
+    }
+    
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedAlways {
             locationManager.startMonitoringForRegion(beaconRegion)
@@ -105,6 +137,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
         
         println("entered region")
+        locationManager.startUpdatingLocation()
+        
         locationManager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
     }
     
