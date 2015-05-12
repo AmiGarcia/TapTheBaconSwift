@@ -190,8 +190,6 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     }
     func baconInBaconAnimation(){
         
-        println("Bacon!")
-        
         let bacon = UIImageView()
         var baconX: CGFloat = self.view.frame.size.width/2
         var baconY: CGFloat = self.view.frame.size.height/2
