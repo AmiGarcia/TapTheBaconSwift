@@ -171,23 +171,16 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         var randomToViewHeight : UInt32 = UInt32(self.view.frame.size.height)
         let randomXOffset = CGFloat(arc4random_uniform(randomToViewWidth))
         let randomYOffset = CGFloat(arc4random_uniform(randomToViewHeight))
-
-        println(randomToViewWidth)
-        println(randomToViewHeight)
-        println(randomXOffset)
-        println(randomYOffset)
-        
         
         let pathR = UIBezierPath()
         pathR.moveToPoint(CGPoint(x: baconX, y: baconY))
         pathR.addLineToPoint(CGPoint(x: randomXOffset, y: randomYOffset))
-//        pathR.addCurveToPoint(CGPoint(x: 301, y: 239 + randomYOffset), controlPoint1: CGPoint(x: 136, y: 373 + randomYOffset), controlPoint2: CGPoint(x: 178, y: 110 + randomYOffset))
 
         let anim = CAKeyframeAnimation(keyPath: "position")
         anim.path = pathR.CGPath
         anim.rotationMode = kCAAnimationRotateAuto
-        anim.repeatCount = 1
-        anim.duration = 3.0
+        anim.repeatCount = 3
+        anim.duration = 1.0
         
         // add the animation
         bacon.layer.addAnimation(anim, forKey: "animate position along path")
