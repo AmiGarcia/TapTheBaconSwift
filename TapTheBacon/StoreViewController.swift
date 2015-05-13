@@ -34,11 +34,11 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     var products: DataBase = DataBase(array: [
         
             // CLICK MULTIPLIERS
-            Product(name: "Click Multiplier", price: 5, multiplier: 2, autoClicks: 0, imageName:"bacon"),
-            Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0, imageName:"bacon"),
-            Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0, imageName:"bacon"),
-            Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0, imageName:"bacon"),
-            Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0, imageName:"bacon"),
+            Product(name: "Click Multiplier", price: 5, multiplier: 2, autoClicks: 0, imageName:"first"),
+            Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0, imageName:"second"),
+            Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0, imageName:"third"),
+            Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0, imageName:"fourth"),
+            Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0, imageName:"fifth"),
     
             // AUTOCLICKERS
             Product(name: "AutoClicker", price: 100, multiplier: 1, autoClicks: 1, imageName:"bacon"),
@@ -59,18 +59,18 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.products = DataBase(array: [
                 
                 // CLICK MULTIPLIERS
-                Product(name: "Click Multiplier", price: 5, multiplier: 2, autoClicks: 0, imageName:"bacon"),
-                Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0, imageName:"bacon"),
-                Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0, imageName:"bacon"),
-                Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0, imageName:"bacon"),
-                Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0, imageName:"bacon"),
+                Product(name: "Click Multiplier", price: 5, multiplier: 2, autoClicks: 0, imageName:"first"),
+                Product(name: "Super Click Multiplier", price: 10, multiplier: 4, autoClicks: 0, imageName:"second"),
+                Product(name: "Mega Click Multiplier", price: 20, multiplier: 8, autoClicks: 0, imageName:"third"),
+                Product(name: "Hiper Click Multiplier", price: 50, multiplier: 16, autoClicks: 0, imageName:"fourth"),
+                Product(name: "Ultra Click Multiplier", price: 200, multiplier: 32, autoClicks: 0, imageName:"fifth"),
                 
                 // AUTOCLICKERS
                 Product(name: "AutoClicker", price: 100, multiplier: 1, autoClicks: 1, imageName:"bacon"),
                 Product(name: "Grandpa", price: 200, multiplier: 1, autoClicks: 5, imageName:"bacon"),
                 Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20, imageName:"bacon"),
                 Product(name: "Bacon Canon", price: 2000, multiplier: 1, autoClicks: 100, imageName:"bacon"),
-                Product(name: "Bacon Provider", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon")
+                Product(name: "Nuclearackon", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon")
             ])
             self.products.saveInUserDefaults()
         }

@@ -11,12 +11,13 @@ import CoreLocation
 import Parse
 
 
-// SET THIS LATER
+// This identifies all estimote virtual beacons
 let uuid = NSUUID(UUIDString: "8492E75F-4FD6-469D-B132-043FE94921D8")
+
+// This is unique for every virtual beacon
 let major = CLBeaconMajorValue(10906)
 let minor = CLBeaconMinorValue(18216)
 let identifier = "beacon.identifier"
-
 
 class GameViewController: UIViewController, CLLocationManagerDelegate {
 
