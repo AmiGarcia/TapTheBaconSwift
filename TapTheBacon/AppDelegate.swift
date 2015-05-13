@@ -34,10 +34,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor(red: 247.0/255.0, green: 211.0/255.0, blue: 175.0/255.0, alpha: 0.2)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        if application.respondsToSelector("registerUserNotificationSettings:") {
+            
+            let types:UIUserNotificationType = (.Alert | .Badge | .Sound)
+            let settings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+            
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
+            
+        } else {
+            // Register for Push Notifications before iOS 8
+            application.registerForRemoteNotificationTypes(.Alert | .Badge | .Sound)
+        }
         
         return true
     }
 
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        println("didRegisterForRemoteNotificationsWithDeviceToken")
+        
+        let currentInstallation = PFInstallation.currentInstallation()
+        
+        currentInstallation.setDeviceTokenFromData(deviceToken)
+        currentInstallation.saveInBackgroundWithBlock { (succeeded, e) -> Void in
+            //code
+        }
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        println("failed to register for remote notifications:  (error)")
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        println("didReceiveRemoteNotification")
+        PFPush.handlePush(userInfo)
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
