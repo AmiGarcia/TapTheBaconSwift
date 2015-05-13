@@ -50,10 +50,10 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func onTimerEvent() {
-//        if( self.beaconsFound.count != 0 ){
-//            self.score += self.multiplier
-//            println("adding")
-//        }else{
+        if( self.beaconsFound.count != 0 ){
+            self.score += self.multiplier
+            println("adding")
+        }//else{
 //            self.score += self.multiplier + self.autoclicks
 //        }
         self.score += self.autoclicks

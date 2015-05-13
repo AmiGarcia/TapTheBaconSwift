@@ -45,7 +45,8 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
             Product(name: "Grandpa", price: 200, multiplier: 1, autoClicks: 5, imageName:"bacon"),
             Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20, imageName:"bacon"),
             Product(name: "Bacon Canon", price: 2000, multiplier: 1, autoClicks: 100, imageName:"bacon"),
-            Product(name: "Bacon Provider", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon")
+            Product(name: "Bacon Provider", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon"),
+            Product(name: "Nuclearacon", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon"),
         ]
 
     )
@@ -70,7 +71,8 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
                 Product(name: "Grandpa", price: 200, multiplier: 1, autoClicks: 5, imageName:"bacon"),
                 Product(name: "Baconizer", price: 1000, multiplier: 1, autoClicks: 20, imageName:"bacon"),
                 Product(name: "Bacon Canon", price: 2000, multiplier: 1, autoClicks: 100, imageName:"bacon"),
-                Product(name: "Nuclearackon", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon")
+                Product(name: "Bacon Provider", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon"),
+                Product(name: "Nuclearacon", price: 10000, multiplier: 1, autoClicks: 200, imageName:"bacon"),
             ])
             self.products.saveInUserDefaults()
         }

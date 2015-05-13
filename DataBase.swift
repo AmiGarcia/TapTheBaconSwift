@@ -17,7 +17,6 @@ class DataBase: NSObject {
     init(array: [Product]) {
         self.products = array
         super.init()
-        
     }
     
     func saveInUserDefaults() {
@@ -53,6 +52,7 @@ class DataBase: NSObject {
         
         for p: Product in products{
             if( userDefaults.objectForKey(p.name) == nil ){
+                println("\(p.name) not in user defaults")
                 return false
             }
         }
